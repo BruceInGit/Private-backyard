@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>tab选项卡体现排他思想</title>
+	<style>
+	    *{
+	    	padding: 0;
+	    	margin: 0;
+	    	list-style: none;
+	    }
+		#tab{
+			border: 1px solid black;
+			width: 500px;
+			margin: 0 auto;
+		}
+		#title{
+           width: auto;	
+           height: 50px;
+		}
+		#title ul li{
+			height: 30px;
+			line-height: 30px;
+			background-color: #e8e8e8;
+			width: 100px;
+			text-align: center;
+			float: left;
+			cursor: pointer;
+		}
+		#content{
+			width: 500px;
+			height: 100px;
+		}
+		.dom{
+			display: none;
+		}
+		.dom ul li{
+			float: left;
+			width: 220px;
+			padding: 10px;
+			text-align: center;
+		}
+		.selected{
+			background-color: #fff !important;
+
+		}
+	</style>
+</head>
+<body>
+	<div id="tab">
+		<div id="title">
+			<ul>
+				<li class="selected">公告</li>
+				<li>新闻</li>
+				<li>动态</li>
+				<li>图片</li>
+				<li>视频</li>
+			</ul>
+		</div>
+		<div id="content">
+			<div class="dom" style="display:block">
+				<ul>
+					<li>具体描述1</li>
+					<li>具体描述2</li>
+					<li>具体描述3</li>
+					<li>具体描述4</li>
+				</ul>
+			</div>
+			<div class="dom" >
+				<ul>
+					<li>具体描述5</li>
+					<li>具体描述6</li>
+					<li>具体描述7</li>
+					<li>具体描述8</li>
+				</ul>
+			</div>
+			<div class="dom" >
+				<ul>
+					<li>具体描述9</li>
+					<li>具体描述10</li>
+					<li>具体描述11</li>
+					<li>具体描述12</li>
+				</ul>
+			</div>
+			<div class="dom" >
+				<ul>
+					<li>具体描述13</li>
+					<li>具体描述14</li>
+					<li>具体描述15</li>
+					<li>具体描述16</li>
+				</ul>
+			</div>
+			<div class="dom" >
+				<ul>
+					<li>具体描述17</li>
+					<li>具体描述18</li>
+					<li>具体描述19</li>
+					<li>具体描述20</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<script>
+		window.onload=function(){
+          var title=document.getElementById('title');
+          var allli=title.getElementsByTagName('li');
+          var dom=document.getElementsByClassName('dom');
+
+          for(var i=0;i<allli.length;i++)
+          {	var li=allli[i];
+          
+          	li.index=i;
+         
+           li.onmouseover=function(){
+           	for(var j=0;j<allli.length;j++){
+                allli[j].className='';
+                dom[j].style.display='none';
+           	}
+            	this.className='selected';
+            	dom[this.index].style.display='block';
+           	
+            }
+        }
+           
+		};
+	</script>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>表单验证</title>
+	<style>
+		.right{
+			color:green;
+		}
+		.error{
+			color:red;
+		}
+	</style>
+</head>
+<body>
+	<div> 请输入成绩
+		<input type="text" id="soc">
+        <span id="li">请输入成绩</span>
+	</div>
+	<script>
+		window.onload=function(){
+			//var soc=document.getElementById('soc');
+			$('soc');
+			
+			//var li=document.getElementById("li");
+			$('li');
+			$('soc').onblur=function(){
+				var value=parseFloat($('soc').value);
+				if(isNaN(value)){
+					/*li.innerText="请输入正确的成绩";
+					li.className='error';*/
+					change('请输入正确的成绩','error');
+				}else if(value>=0&&value<=100){
+					/*li.innerText="正确";
+				   li.className="right";*/
+				   change('正确','right');
+				   }
+				   else{
+				   	/*li.innerText="成绩在0-100之间";
+					li.className='error';*/
+					change('成绩在0-100之间','error');
+				   }
+				}
+			$('soc').onfocus=function(){
+                    /*li.innerText='请输入成绩';
+					li.className='';*/
+					change('请输入成绩','');
+					$('soc').value='';
+			}
+		}
+        function change(innerText,className){
+        	        $('li').innerText=innerText;
+					$('li').className=className;
+
+        }
+		function $(id){
+			return typeof id==="string" ? document.getElementById(id) : null;
+		
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>js图片切换</title>
+	<style>
+	button{
+		width: 50px;
+		height: 100px;
+		font-size: 50px;
+		line-height: 100px;
+		opacity: 0.6;
+	}
+	#box{
+		position: relative;
+		width: 960px;
+		height: 600px;
+		margin: 0 auto;
+	}
+		#pre{
+        position: absolute;
+        top: 250px;
+		}
+		#next{
+        position: absolute;
+        top: 250px;
+        right: 0;
+		}
+	</style>
+</head>
+<body>
+	<div id="box">
+	  <button id="pre">&lsaquo;</button>
+	  <img src="img/js01.jpg">
+	  <button id="next">&rsaquo;</button>
+    </div>
+    <script>
+    	window.onload=function(){
+    		var pre=document.getElementById("pre");
+    		var next=document.getElementById("next");
+    		var img=document.getElementsByTagName("img")[0];
+    		var first=1;
+    		var last=5;
+    		var index=first;
+    		pre.onclick=function(){
+    			if(index==first)
+    			{
+    				index=last;
+    			}
+    			else
+    				index--;
+    			img.setAttribute("src","img/js0"+index+".jpg");
+    		}
+    		next.onclick=function(){
+    			if (index==last) {
+    				index=first;
+    			}else
+    			    index++;
+    			    img.setAttribute("src","img/js0"+index+".jpg");
+
+    		}
+    	}
+    </script>
+</body>
+</html>

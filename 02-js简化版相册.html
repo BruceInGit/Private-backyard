@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>简化版相册</title>
+	<style>
+	*{
+		margin: 0;
+		padding: 0;
+	}
+		.box{
+			text-align: center;
+
+		}
+		ul{ 
+			width: 960px;
+			overflow: hidden;
+			margin: 0 auto;
+		}
+		ul>li{
+			width: 175px;
+			float: left;
+			padding-right: 21.25px; 
+			list-style: none;
+		}
+		ul>li>a>img{
+			width: 175px;
+		}
+		ul>li:last-child{
+			padding: 0;
+			width: 175px;
+			float: left;
+		}
+	</style>
+</head>
+<body>
+	<div class="box">
+		<p id="head">图片一</p>
+		<img src="img/js01.jpg" alt="" id="big" width="960px">
+		<ul>
+			<li>
+				<a href="img/js01.jpg"title="图片一">
+					<img src="img/js01.jpg" alt="">
+				</a>
+			</li>
+			<li>
+				<a href="img/js02.jpg"title="图片二">
+					<img src="img/js02.jpg"  alt="">
+				</a>
+			</li>
+			<li>
+				<a href="img/js03.jpg"title="图片三">
+					<img src="img/js03.jpg"  alt="">
+				</a>
+			</li>
+			<li>
+				<a href="img/js04.jpg"title="图片四">
+					<img src="img/js04.jpg"  alt="">
+				</a>
+			</li>
+			<li>
+				<a href="img/js05.jpg"title="图片五">
+					<img src="img/js05.jpg"  alt="">
+				</a>
+			</li>
+		</ul>
+	</div>
+	<script>
+		window.onload=function(){
+          var head=document.getElementById("head");
+          var big=document.getElementById("big");
+          var ul=document.getElementsByTagName("ul")[0];
+          var a=ul.getElementsByTagName("a");
+          for(var i=0;i<a.length;i++)
+          {
+          	 a[i].onclick=function(){
+          	 	big.setAttribute("src",this.href);
+          	 	head.innerText=this.title;
+          	 	return false;
+          	 }
+          }
+		}
+	</script>
+</body>
+</html>
