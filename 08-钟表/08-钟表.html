@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>钟表</title>
+	<style>
+		 *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        #box{
+            width: 600px;
+            height: 600px;
+            background: url("img/clock.jpg") no-repeat;
+            margin: 10px auto;
+
+            position: relative;
+        }
+
+        #hour, #min, #second{
+            position: absolute;
+            left: 50%;
+            top: 0;
+            width: 30px;
+            height: 600px;
+            margin-left: -15px;
+        }
+
+        #hour{
+            background: url("img/hour.png") no-repeat center center;
+           
+        }
+
+       #min{
+            background: url("img/minute.png") no-repeat center center;
+        }
+
+        #second{
+            background: url("img/second.png") no-repeat center center;
+        }
+	</style>
+</head>
+
+<body>
+	 <div id="box">
+       <div id="hour"></div>
+       <div id="min"></div>
+       <div id="second"></div>
+   </div>
+   <script type="text/javascript">
+   	window.onload=function(){
+   		
+   		var h=document.getElementById('hour');
+   		var m=document.getElementById('min');
+   		var s=document.getElementById('second');
+   		setInterval(function(){
+   			var date=new Date();
+   			//计算毫秒 秒 分 时
+           var mili=date.getMilliseconds();
+           var second=date.getSeconds()+mili/1000;
+           var minute=date.getMinutes()+second/60;
+           var hour=date.getHours()%12+minute/60;
+           //console.log(hour);
+            //console.log(minute);
+           //console.log(second);
+          //旋转角度
+          h.style.transform='rotate('+hour*30+'deg)';
+           m.style.transform='rotate('+minute*6+'deg)';
+            s.style.transform='rotate('+second*6+'deg)';
+   		},1000);
+   	}
+   </script>
+</body>
+</html>

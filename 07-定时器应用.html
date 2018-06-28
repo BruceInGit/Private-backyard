@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定时器应用</title>
+	<style type="text/css">
+		#time{
+			display: flex;
+			font-size: 50px;
+			justify-content: center;
+			align-items: center;
+		}
+		#pic{
+			
+			display: flex;
+			justify-content: center;
+			align-items: center;
+		}
+		#pic img{
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div id="time">5</div>
+	<div id="pic"><img src="img/js01.jpg"></div>
+</body>
+<script type="text/javascript">
+	window.onload=function(){
+		var time=document.getElementById('time');
+		var timer=setInterval(function jishi(){
+			time.innerText=time.innerText-1;
+			if(time.innerText==='0')
+				{clearInterval(timer);
+                 time.style.display='none';
+                 var pic=document.getElementById('pic');
+                var img=pic.getElementsByTagName('img')[0];
+                 img.style.display='block';
+				}
+
+		},1000);
+
+	}
+</script>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>九宫格布局</title>
+	<style type="text/css">
+		#bottom{
+			position: relative;
+			
+		}
+	</style>
+</head>
+<body>
+	<button>三列</button>
+	<button>四列</button>
+	<button>五列</button>
+	<div id="bottom">
+		<div><img src="img/01.jpg" ></div>
+		<div><img src="img/02.jpg" ></div>
+		<div><img src="img/03.jpg" ></div>
+		<div><img src="img/04.jpg" ></div>
+		<div><img src="img/05.jpg" ></div>
+		<div><img src="img/06.jpg" ></div>
+		<div><img src="img/07.jpg" ></div>
+		<div><img src="img/08.jpg" ></div>
+		<div><img src="img/09.jpg" ></div>
+	</div>
+	<script type="text/javascript">
+		window.onload=function(){
+			var button=document.getElementsByTagName('button');
+			var bottom=document.getElementById('bottom');
+			//监听鼠标事件
+			button[0].onclick=function(){
+                img_w=200;img_h=200;marginXY=15;col=3
+                for(var i=0;i<bottom.children.length;i++)
+                {    //根据下标i计算每个盒子的所在行列
+                	loca_x=parseInt(i/col);
+                	loca_y=parseInt(i%col);
+                	//盒子定位
+                	var box=bottom.children[i];
+                	box.style.position='absolute';
+                	box.style.top=loca_x*(img_h+marginXY)+"px";
+                	box.style.left=loca_y*(img_w+marginXY)+"px";
+                }
+			}
+			button[1].onclick=function(){
+                img_w=200;img_h=200;marginXY=15;col=4
+                for(var i=0;i<bottom.children.length;i++)
+                {    //根据下标i计算每个盒子的所在行列
+                	loca_x=parseInt(i/col);
+                	loca_y=parseInt(i%col);
+                	//盒子定位
+                	var box=bottom.children[i];
+                	box.style.position='absolute';
+                	box.style.top=loca_x*(img_h+marginXY)+"px";
+                	box.style.left=loca_y*(img_w+marginXY)+"px";
+                }
+			}
+			button[2].onclick=function(){
+                img_w=200;img_h=200;marginXY=15;col=5
+                for(var i=0;i<bottom.children.length;i++)
+                {    //根据下标i计算每个盒子的所在行列
+                	loca_x=parseInt(i/col);
+                	loca_y=parseInt(i%col);
+                	//盒子定位
+                	var box=bottom.children[i];
+                	box.style.position='absolute';
+                	box.style.top=loca_x*(img_h+marginXY)+"px";
+                	box.style.left=loca_y*(img_w+marginXY)+"px";
+                }
+			}
+		}
+	</script>
+</body>
+</html>
