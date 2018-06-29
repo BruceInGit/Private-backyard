@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>简易轮播图</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        a{
+            text-decoration: none;
+            color: #000;
+        }
+
+        #box{
+            width: 322px;
+            height: 250px;
+            border: 1px solid #ccc;
+            margin: 100px auto;
+
+            position: relative;
+        }
+
+        .left, .right{
+            width: 60px;
+            height: 250px;
+            /*background-color:red;*/
+            float: left;
+        }
+
+        .center{
+            width: 200px;
+            height: 250px;
+            float: left;
+            border-left:1px solid #ccc;
+            border-right:1px solid #ccc;
+            overflow: hidden;
+        }
+
+        li{
+            line-height: 27px;
+            text-align: center;
+            border-bottom: 1px solid #ccc;
+        }
+
+        .left li:last-child, .right li:last-child{
+            border-bottom: none;
+        }
+
+        .current{
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <ul class="left">
+        <li class="current"><a href="#">美食1</a></li>
+        <li><a href="#">美食2</a></li>
+        <li><a href="#">美食3</a></li>
+        <li><a href="#">美食4</a></li>
+        <li><a href="#">美食5</a></li>
+        <li><a href="#">美食6</a></li>
+        <li><a href="#">美食7</a></li>
+        <li><a href="#">美食8</a></li>
+        <li><a href="#">美食9</a></li>
+    </ul>
+    <div class="center">
+        <a href="#"><img src="img/img1.jpg" width="200" height="250"></a>
+        <a href="#"><img src="img/img2.jpg" width="200" height="250"></a>
+        <a href="#"><img src="img/img3.jpg" width="200" height="250"></a>
+        <a href="#"><img src="img/img4.jpg" width="200" height="250"></a>
+        <a href="#"><img src="img/img5.jpg" width="200" height="250"></a>
+        <a href="#"><img src="img/img6.jpg" width="200" height="250"></a>
+        <a href="#"><img src="img/img7.jpg" width="200" height="250"></a>
+        <a href="#"><img src="img/img8.jpg" width="200" height="250"></a>
+        <a href="#"><img src="img/img9.jpg" width="200" height="250"></a>
+        <a href="#"><img src="img/img10.jpg" width="200" height="250"></a>
+        <a href="#"><img src="img/img11.jpg" width="200" height="250"></a>
+        <a href="#"><img src="img/img12.jpg" width="200" height="250"></a>
+        <a href="#"><img src="img/img14.jpg" width="200" height="250"></a>
+        <a href="#"><img src="img/img15.jpg" width="200" height="250"></a>
+        <a href="#"><img src="img/img16.jpg" width="200" height="250"></a>
+        <a href="#"><img src="img/img17.jpg" width="200" height="250"></a>
+        <a href="#"><img src="img/img18.jpg" width="200" height="250"></a>
+        <a href="#"><img src="img/img19.jpg" width="200" height="250"></a>
+    </div>
+    <ul class="right">
+        <li><a href="#">美食10</a></li>
+        <li><a href="#">美食11</a></li>
+        <li><a href="#">美食12</a></li>
+        <li><a href="#">美食13</a></li>
+        <li><a href="#">美食14</a></li>
+        <li><a href="#">美食15</a></li>
+        <li><a href="#">美食16</a></li>
+        <li><a href="#">美食17</a></li>
+        <li><a href="#">美食18</a></li>
+    </ul>
+</div>
+<script>
+    window.onload = function () {
+        var allLi=document.getElementsByTagName('li');
+        var allImg=document.getElementsByTagName('img');
+        //索引
+        var loop=0;
+
+        //定义定时器
+        setInterval(function () {
+            //排他
+            for(var i=0;i<allLi.length;i++)
+            {
+                allLi[i].className='';
+                allImg[i].style.display='none';
+            }
+            loop+=1;
+            loop%=18;
+            allImg[loop].style.display='block';
+            allLi[loop].className='current';
+        },1000)
+    }
+</script>
+</body>
+</html>

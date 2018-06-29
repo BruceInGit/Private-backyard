@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>照片墙</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        html, body, ul{
+            width: 100%;
+            height: 100%;
+        }
+
+        #picwall{
+            position: relative;
+        }
+        #picwall li{
+            width: 250px;
+            height: 360px;
+            box-shadow: 1px  1px  10px black;
+            position: absolute;
+            transition:all 1s;
+        }
+        #picwall .current{
+            top:50% !important;
+            left: 50% !important;
+            z-index: 999;
+            transform: scale(1.5,1.5) rotate(0deg) translate(-50%, -50%) !important;
+
+        }
+    </style>
+</head>
+<body>
+<ul id="picwall"></ul>
+<script src="js/Underscore-min.js"></script>
+<script>
+    window.onload=function () {
+        var pic=document.getElementById('picwall')
+        //获取窗口宽高
+        var x=document.documentElement.clientWidth-250;
+        var y=document.documentElement.clientHeight-360;
+        //添加li标签
+       for(var i=0;i<10;i++)
+       {
+           var li=document.createElement('li');
+           pic.appendChild(li);
+           //添加IMG
+           var img=document.createElement('img');
+           li.appendChild(img);
+           img.src="images/pic"+(i+1)+".jpg ";
+       }
+       //取得所有创建的li
+        var allLi=pic.children;
+        //对每个li进行操作
+        for(var j=0;j<10;j++) {
+            var li = allLi[j];
+            //随机分布
+            li.style.top = _.random(0, y) + 'px';
+            li.style.left = _.random(0, x) + 'px';
+            //随机旋转
+            li.style.transform = "rotate("+_.random(0,360)+"deg)";
+            //鼠标监听事件
+            li.onclick=function () {
+                //排他
+                for(var a=0;a<10;a++)
+                {
+                    allLi[a].className='';
+                }
+                this.className='current';
+            }
+        }
+
+
+    }
+</script>
+</body>
+</html>
