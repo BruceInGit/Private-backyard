@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>放大镜特效</title>
+    <style>
+        *{
+            padding:0;
+            margin: 0;
+            list-style: none;
+        }
+        #box{
+            width: 350px;
+            height: 350px;
+            position: relative;
+            margin: 100px 0 0 100px;
+        }
+        #smallbox{
+            width: 100%;
+            height: 100%;
+            border: 1px solid #ccc;
+            position: relative;
+        }
+        #bigbox{
+            width: 600px;
+            height: 600px;
+            border: 1px solid #ccc;
+            overflow: hidden;
+            position: absolute;
+            left: 360px;
+            top:0;
+            display: none;
+        }
+        #bigbox img{
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        #list{
+            margin: 20px 0 0 100px;
+        }
+        #list ul li{
+            float: left;
+            margin: 3px;
+        }
+        #mask{
+            width: 100px;
+            height: 100px;
+            background-color: rgba(255, 255, 0, .4);
+            position: absolute;
+            left: 0;
+            top:0;
+            cursor: move;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="box">
+    <div id="smallbox">
+        <img src="images/pic001.jpg" >
+        <span id="mask"></span>
+    </div>
+    <div id="bigbox">
+        <img src="images/pic01.jpg" >
+    </div>
+</div>
+<div id="list">
+    <ul>
+        <li>
+            <img src="images/pic0001.jpg" >
+        </li>
+        <li>
+            <img src="images/pic0002.jpg" >
+        </li>
+        <li>
+            <img src="images/pic0003.jpg" >
+        </li>
+    </ul>
+</div>
+<script>
+    window.onload=function () {
+        var smallbox=document.getElementById('smallbox');
+        var mask=document.getElementById('mask');
+        var bigbox=document.getElementById('bigbox');
+        var list=document.getElementById('list');
+        var bigimg = bigbox.children[0];
+        //监听鼠标进入
+        smallbox.onmouseover=function () {
+            //隐藏的内容显示
+            mask.style.display='block';
+            bigbox.style.display='block';
+            //监听鼠标移动
+            smallbox.onmousemove=function (event) {
+                var event = event || window.event;
+                /*求出鼠标位置
+                注意：这里的smallbox.offsetParent.offsetLeft才是盒子距离屏幕的左距
+                smallbox.offsetLeft是距离上一个定位的父元素即box的距离 ，距离也就等于0
+                pageX不适用于IE6-8，使用clientX则在页面滚动后MASK会出现定位问题
+                */
+                var x = event.pageX || smallbox.scrollLeft + event.clientX;
+                var y = event.pageY || smallbox.scrollTop + event.clientY;
+                mouseX = x - smallbox.offsetParent.offsetLeft - mask.offsetWidth * 0.5;
+                mouseY = y - smallbox.offsetParent.offsetTop - mask.offsetHeight * 0.5;
+                //边界值分析
+                if (mouseX < 0) {
+                    mouseX = 0;
+                } else if (mouseX >= smallbox.offsetParent.offsetWidth - mask.offsetWidth) {
+                    mouseX = smallbox.offsetWidth - mask.offsetWidth;
+                }
+                if (mouseY < 0) {
+                    mouseY = 0;
+                } else if (mouseY >= smallbox.offsetHeight - mask.offsetHeight) {
+                    mouseY = smallbox.offsetHeight - mask.offsetHeight;
+                }
+
+                //mask位置
+                mask.style.left = mouseX + 'px';
+                mask.style.top = mouseY + 'px';
+                //大图移动
+
+                bigimg.style.left = -mouseX / (smallbox.offsetWidth / bigbox.offsetWidth) + 'px';
+                bigimg.style.top = -mouseY / (smallbox.offsetHeight / bigbox.offsetHeight) + 'px';
+            }
+        }
+        //监听鼠标离开
+        smallbox.onmouseout=function () {
+            //显示的内容隐藏
+            mask.style.display='none';
+            bigbox.style.display='none';
+        }
+        //遍历LI 使用闭包解决异步
+        var allLi=list.getElementsByTagName('li');
+        for(var i=0;i<allLi.length;i++) {
+            (function (i) {
+                var li = allLi[i];
+                //监听li
+                li.onmouseover = function () {
+                    smallbox.children[0].src = 'images/pic00' + (i + 1) + '.jpg';
+                    bigimg.src = 'images/pic0' + (i + 1) + '.jpg';
+                }
+            })(i);
+        }
+    }
+</script>
+</body>
+</html>

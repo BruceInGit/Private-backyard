@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>offset弹性导航</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            list-style: none;
+        }
+        body{
+            background-color: pink;
+        }
+       #nav{
+           width:900px;
+           height:63px;
+           background: url("img/doubleOne.png") no-repeat right #fff;
+           margin: 100px auto;
+           position: relative;
+           z-index: 99;
+       }
+        #nav ul{
+            position: relative;
+        }
+        #nav ul li{
+           float: left;
+            line-height: 68px;
+            width: 88px;
+            text-align: center;
+            height: 63px;
+            cursor: pointer;
+        }
+        #t_mall{
+            width: 88px;
+            height: 63px;
+            background: url("img/tMall.png") no-repeat ;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+<nav id="nav">
+    <span id="t_mall"></span>
+    <ul>
+        <li>双11狂欢</li>
+        <li>服装会场</li>
+        <li>数码家电</li>
+        <li>家具建材</li>
+        <li>母婴童装</li>
+        <li>手机会场</li>
+        <li>美妆会场</li>
+        <li>进口会场</li>
+        <li>飞猪旅行</li>
+    </ul>
+</nav>
+<script>
+    window.onload=function () {
+        var nav=document.getElementById('nav');
+        var span=document.getElementById('t_mall');
+        var allLi=nav.getElementsByTagName('li');
+        //记录鼠标位置
+        var beginX=0;
+        //遍历每个li标签
+        for(var i=0;i<allLi.length;i++)
+        {    var li=allLi[i];
+            //监听鼠标进入
+            li.onmouseover=function () {
+                end = this.offsetLeft;
+
+            }
+            //监听鼠标离开
+            li.onmouseout=function () {
+                end = beginX;
+            }
+            //监听鼠标点击
+            li.onmousedown=function () {
+                beginX = this.offsetLeft;
+            }
+        }
+        //缓动动画
+        var begin = 0;var end=0;
+
+        setInterval(function () {
+
+            begin = begin + (end - begin) * 0.1;
+            t_mall.style.left = begin + "px";
+        },10)
+    }
+</script>
+</body>
+</html>
