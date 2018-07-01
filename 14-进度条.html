@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>14-进度条</title>
+    <style>
+        .progress{
+            width: 1000px;
+            height: 40px;
+            margin: 100px auto;
+            position: relative;
+            line-height: 40px;
+        }
+        .progress_bar{
+            width: 900px;
+            height: 100%;
+            position: relative;
+            border-radius: 8px;
+            background-color: #e8e8e8;
+        }
+        .progress_bar #mask{
+            background-color: orangered;
+            height: 40px;
+            width:0px;
+            border-bottom-left-radius: 8px;
+            border-top-left-radius: 8px;
+        }
+        .progress_bar span{
+            width: 20px;
+            height: 50px;
+            background-color: orangered;
+            position: absolute;
+            top:-5px;
+            left: 0;
+            border-radius: 5px;
+        }
+        #progress_value{
+            position: absolute;
+            right: 40px;
+            top: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="progress">
+        <div class="progress_bar">
+            <div id="mask"></div>
+            <span></span>
+        </div>
+        <div id="progress_value">0%</div>
+</div>
+<script>
+    window.onload=function () {
+        var mask=document.getElementById('mask');
+        var progress_value=document.getElementById('progress_value');
+        var progress_bar=document.getElementsByClassName('progress_bar')[0]
+        var span=progress_bar.getElementsByTagName('span')[0];
+        //监听鼠标按下
+       span.onmousedown=function (event)
+       {
+            var e=event||window.event;
+            //获取当前位置
+           var begin=e.clientX-span.offsetLeft;
+              console.log(begin);
+           //获取鼠标移动 按下在body中移动也算
+           document.onmousemove=function (event)
+           {
+               var e=event||window.event;
+               //移动的距离
+               var x=e.clientX-begin;
+               //边界值判断
+               if(x<0){
+                   x=0;
+               }else if(x>=progress_bar.offsetWidth-span.offsetWidth){
+                   x=progress_bar.offsetWidth-span.offsetWidth;
+               }
+               //移动
+               mask.style.width=x+'px';
+               span.style.left=x+'px';
+               progress_value.innerText= parseInt((x/(progress_bar.offsetWidth-span.offsetWidth))*100)+'%';
+               return false;
+           };
+          document.onmouseup=function () {
+            document.onmousemove=null;
+          }
+       }
+
+    }
+</script>
+</body>
+</html>

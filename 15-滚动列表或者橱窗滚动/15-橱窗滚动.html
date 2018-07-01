@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>橱窗特效</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            border:none;
+        }
+
+        .box{
+            width: 800px;
+            height: 200px;
+            border: 1px solid #ddd;
+            position: relative;
+            margin: 100px auto;
+            overflow: hidden;
+        }
+
+        .box ul{
+            width: 2600px;
+            position: absolute;
+            left: 0;
+            top: 20px;
+        }
+
+       .box ul li{
+            float: left;
+        }
+
+        .box_bottom{
+            position: absolute;
+            left: 0;
+            bottom: 0;
+            background-color: #e8e8e8;
+            width: 100%;
+            height: 25px;
+        }
+        #mask{
+            position: absolute;
+            left: 0;
+            top:0;
+            height: 25px;
+            background-color: orangered;
+            border-radius: 12px;
+            cursor: pointer;
+            width: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="box">
+    <ul id="box_top">
+        <li><img src="images/img1.jpg" alt=""></li>
+        <li><img src="images/img2.jpg" alt=""></li>
+        <li><img src="images/img3.jpg" alt=""></li>
+        <li><img src="images/img4.jpg" alt=""></li>
+        <li><img src="images/img5.jpg" alt=""></li>
+        <li><img src="images/img6.jpg" alt=""></li>
+        <li><img src="images/img7.jpg" alt=""></li>
+        <li><img src="images/img8.jpg" alt=""></li>
+        <li><img src="images/img1.jpg" alt=""></li>
+        <li><img src="images/img2.jpg" alt=""></li>
+        <li><img src="images/img1.jpg" alt=""></li>
+        <li><img src="images/img2.jpg" alt=""></li>
+        <li><img src="images/img3.jpg" alt=""></li>
+        <li><img src="images/img4.jpg" alt=""></li>
+        <li><img src="images/img5.jpg" alt=""></li>
+        <li><img src="images/img6.jpg" alt=""></li>
+        <li><img src="images/img7.jpg" alt=""></li>
+        <li><img src="images/img8.jpg" alt=""></li>
+        <li><img src="images/img1.jpg" alt=""></li>
+        <li><img src="images/img2.jpg" alt=""></li>
+    </ul>
+    <div class="box_bottom">
+        <span id="mask"></span>
+    </div>
+</div>
+<script>
+    window.onload=function () {
+        var ul=document.getElementById('box_top');
+        var mask=document.getElementById('mask');
+        var box=ul.parentNode;
+        //算出滚动条长度
+        var length=(ul.parentNode.offsetWidth*ul.parentNode.offsetWidth)/ul.offsetWidth;
+        mask.style.width=length+'px';
+        //监听鼠标按下
+        mask.onmousedown=function (event) {
+            var e=event||window.event;
+            //初始位置 -mask左边距离后是固定值防止再次按下导致移动混乱
+            //begin=鼠标在mask上的距离+box里屏幕左边距离
+            var begin=e.clientX-mask.offsetLeft;
+            //监听鼠标移动
+            document.onmousemove=function (event) {
+                var e=event||window.event;
+                //移动位置
+                var x=e.clientX-begin;
+                //边界值
+                if(x<0){
+                    x=0;
+                }else if(x>=box.offsetWidth-mask.offsetWidth){
+                    x=box.offsetWidth-mask.offsetWidth;
+                }
+                mask.style.left=x+'px';
+                //ul的图动
+                var ulX=(x*ul.offsetWidth)/box.offsetWidth;
+                ul.style.left=-ulX+'px';
+                return false;
+            }
+            document.onmouseup=function () {
+                document.onmousemove=null;
+            }
+        }
+    }
+</script>
+</body>
+</html>
