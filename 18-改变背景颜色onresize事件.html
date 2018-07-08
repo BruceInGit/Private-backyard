@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>改变背景颜色</title>
+</head>
+<body>
+<script>
+    window.onload=function(){
+        //定义背景颜色
+        var bcc;
+        //在加载时不显示背景颜色，所以需要先执行一次，这里会将函数封装减少代码
+        change();
+        window.onresize=function () {
+            change();
+        }
+    }
+    //封装client函数获取屏幕可视区域宽高
+    function client(){
+        if(window.innerWidth) {
+            return {
+                width: window.innerWidth,
+                height: window.innerHeight
+            }
+        }
+        else if(document.compatMode==="CSS1Compat"){
+                return{
+                    width:document.documentElement.clientWidth,
+                    height:document.documentElement.clientHeight
+                }
+            }
+            else{
+                return{
+                    width:document.body.clientWidth,
+                    height:document.body.clientHeight
+                }
+            }
+        
+    }
+    function change() {
+        if(client().width>=960){
+            bcc='red';
+        }
+        else if(client().width>=640){
+            bcc='blue';
+        }
+        else{
+            bcc='green';
+        }
+        document.body.style.backgroundColor=bcc;
+    }
+</script>
+</body>
+</html>
