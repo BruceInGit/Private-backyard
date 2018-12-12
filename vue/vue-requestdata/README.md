@@ -15,14 +15,9 @@ npm run serve
 npm run build
 ```
 
-### Run your tests
+### 说明
 ```
-npm run test
-```
-
-### Lints and fixes files
-```
-npm run lint
+使用vue-cli3.0
 ```
 
 ### Customize configuration
