@@ -2,17 +2,20 @@
   <div id="app">
     <requestdata></requestdata>
     <storage></storage>
+    <parent></parent>
   </div>
 </template>
 
 <script>
 import requestdata from './components/requestdata.vue'
 import storage from './components/storage'
+import parent from './components/parent'
 export default {
   name: 'app',
   components: {
     requestdata,
-    storage
+    storage,
+    parent
   }
 }
 </script>

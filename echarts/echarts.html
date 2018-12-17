@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+     #a,#b,#d{
+         width:590px;
+         height: 490px;
+         display: inline-block;
+         padding: 20px;
+     }
+     #c{
+         width: 1200px;
+         height: 490px;
+         margin: 0 auto;
+     }
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <div id="a"></div>
+    <div id="b"></div>
+    <div id="c"></div>
+    <div id="d"></div>
+</body>
+<script src="echarts.js"></script>
+<script>
+    var myChart = echarts.init(document.getElementById('a'));
+           var option = {
+               tooltip: {},
+               legend: {
+                   left:'50',
+                   bottom:'6%',
+                   itemGap:16,
+                   textStyle:{
+                    padding: [0,40,0,0]
+                   },
+                   data:['商业金融','资源环境','交通出行','城市安全','医疗卫生','教育就学','人才就业','文化体闲',
+                         '农业发展','城市建设','社会保障','食品健康','安居住房','民生服务','贸易物流','科技创新']
+               },
+              
+               series: [{
+                   name: '数据领域',
+                   type: 'pie',
+                   avoidLabelOverlap: false,
+                   center: ['50%', '36%'],
+                   radius: ['40%', '55%'],
+                   color: ['#13b5b1','#32b16c','#80c269','#fff45c','#f8b551','#f19149','#ec6941','#eb6877','#ae5da1', '#3d5eb6','#065ba8','#005fd5', '#0077db', '#0086ee','#009dee','#00b7ee'],
+                   label:{
+                        normal:{
+                            show:false,
+                            position:'center'
+                       },
+                        emphasis: {
+                            show: true,
+                            textStyle: {
+                               fontSize: '18',
+                               fontWeight: 'bold'
+                            }
+                        }
+                   },
+
+                   data: [{value:300,name:'商业金融'},
+                          {value:545,name:'资源环境'},
+                          {value:503,name:'交通出行'},
+                          {value:234,name:'城市安全'},
+                          {value:300,name:'医疗卫生'},
+                          {value:788,name:'教育就学'},
+                          {value:300,name:'人才就业'},
+                          {value:234,name:'文化体闲'},
+                          {value:300,name:'农业发展'},
+                          {value:222,name:'城市建设'},
+                          {value:666,name:'社会保障'},
+                          {value:300,name:'食品健康'},
+                          {value:55,name:'安居住房'},
+                          {value:300,name:'民生服务'},
+                          {value:700,name:'贸易物流'},
+                          {value:800,name:'科技创新'}]
+               }]
+              };
+
+        // 使用刚指定的配置项和数据显示图表。
+            myChart.setOption(option);
+</script>
+<script>
+     var myChart1 =echarts.init(document.getElementById('b'));
+            var option1 = {
+                angleAxis: {
+                     min:0,
+                     max:15,
+                    axisLine:{show:false},
+                    axisTick:{show:false},
+                    axisLabel:{show:false},
+                    splitLine:{show:false},
+                    splitArea:{show:false}
+                 },
+                 radiusAxis: {
+                     type: 'category',
+                     
+                     data: ['移动应用', '数据接口', '数据应用','数据产品'],
+                     z: 10,
+                      axisLine:{
+                     	show:false
+                     },
+                     axisTick:{
+                     	show:false
+                     },
+                     axisLabel:{
+                     	show:true
+                     }
+                 },
+                 polar: {
+                    radius:'60%'
+                 },
+                 color:['#f19149','#80c269','#0086ee','#13b5b1'],
+                 series: [
+                     
+                     {
+                     type: 'bar',
+                     data: [2, 0, 0, 0],
+                     coordinateSystem: 'polar',
+                     name: '移动应用',
+                     stack: 'a',
+                    
+                 }, {
+                     type: 'bar',
+                     data: [0, 4, 0, 0],
+                     coordinateSystem: 'polar',
+                     name: '数据接口',
+                     stack: 'a'
+                 }, {
+                     type: 'bar',
+                     data: [0, 0, 8, 0],
+                     coordinateSystem: 'polar',
+                     name: '数据应用',
+                     stack: 'a'
+                 },
+                   {
+                       type: 'bar',
+                       data: [0, 0,0 ,12],
+                       coordinateSystem: 'polar',
+                       name: '数据产品',
+                       stack: 'a',
+                       barWidth:'6',
+                     barGap: '10%'
+                   }
+                ],
+                 legend: {
+                     show: true,
+                     data: ['移动应用', '数据接口', '数据应用','数据产品']
+                 }
+            }
+            myChart1.setOption(option1);
+
+
+            
+</script>
+<script>
+      var myChart2 =echarts.init(document.getElementById('c'));  
+              var option2={
+                color:['#0086ee','#13b5b1','#80c269','#f19149'],
+                legend: {
+                	show:true,
+                    orient: 'horizontal',
+                    x:'center',
+                    y:'top',
+                    data:['数据产品','数据应用','数据接口','移动应用']
+                       },
+                       xAxis: [
+                            {    axisLabel: {
+                                           interval:0,
+                                           rotate:40
+                                        },
+                                type: 'category',
+                                axisTick: {show: false},
+                                data: ['市发改委', '市经信委', '市商务委', '市教委', '市科委','市民宗委','市公安局','市监察局','市民政局','市司法局']
+                            }
+                        ],
+                        yAxis: [
+                            {
+                                type: 'value'
+                            }
+                        ],
+                        series: [
+                            {
+                                name: '数据产品',
+                                type: 'bar',
+                                barGap: 0,
+                                data: [320, 332, 301, 334, 390,123,554,236,854,425]
+                            },
+                            {
+                                name: '数据应用',
+                                type: 'bar',
+                                data: [220, 182, 191, 234, 290,564,361,124,587,985]
+                            },
+                            {
+                                name: '数据接口',
+                                type: 'bar',
+                                data: [1000, 232, 201, 154, 190,325,254,821,354,212]
+                            },
+                            {
+                                name: '移动应用',
+                                type: 'bar',
+                                data: [98, 77, 101, 99, 40,325,152,478,265,363]
+                            }
+                        ]
+              }   
+              myChart2.setOption(option2);     
+</script>
+<script>
+     var myChart3 =echarts.init(document.getElementById('d')); 
+     var option3= {
+    title: {
+        text: '下载量TOP10',
+        right:'0%',
+        textStyle:{
+        	color:'#3c67d8',
+        	fontWeight:'bold',
+        	fontSize:'14'
+        }
+    },
+    xAxis: {
+        type: 'value',
+        inverse: true,
+        show:false
+    },
+    yAxis: {
+        type: 'category',
+        position:'right',
+        axisLine:{
+        	show:false
+        },
+        axisTick:{
+        	show:false
+        },
+        axisLabel:{
+            textStyle:{
+                fontSize:'12',
+                color:'#333',
+            },
+            align:'right',
+            verticalAlign:'bottom',
+            padding:[0,0,12,0],
+            inside:true,
+        },
+        inverse: true,
+        data: ['1230','541','1235465','54561231','12313','1531231','asdasdasd','asdasd','asdasdasd','asdasddf']
+    },
+    series: [{
+        name: '',
+        type: 'bar',
+        barWidth:'4',
+        itemStyle:{
+			normal:{
+				barBorderRadius:2,
+				color:function(params) {
+					var colorList = [['#ec6941','#f8cbbc','#ffffff'],['#f1924a','#f7c39a','#ffffff'],['#f8b755','#fbd69f','#ffffff'],
+						['#82c36b','#b3daa5','#ffffff'],['#36b36f','#8ad3ab','#ffffff'],['#17b6b2','#7cd6d4','#ffffff'],
+						['#05b8ee','#67d4f5','#ffffff'],['#0789ee','#6dbaf5','#ffffff'],['#0789ee','#6dbaf5','#ffffff'],['#0789ee','#6dbaf5','#ffffff']];
+					var index=params.dataIndex;
+					if(params.dataIndex >= colorList.length){
+						index=params.dataIndex-colorList.length;
+					}
+					return new echarts.graphic.LinearGradient(0, 0, 1, 0,[
+						{offset: 0, color: colorList[index][0]},
+						{offset: 0.5, color: colorList[index][1]},
+						{offset: 1, color: colorList[index][2]}
+					]);
+				},
+				label: {
+					show: true, //开启显示
+					position: 'left',
+					textStyle: { //数值样式
+					    color: function(params) {
+							var colorList = ['#ec6941','#ec6941','#ec6941','#34b26d','#34b26d','#34b26d','#0379db','#0379db','#0379db','#0379db'];
+							return colorList[params.dataIndex]
+						},
+						fontSize:14,
+						fontWeight: 600
+					}
+				}
+			}
+		},
+        data: [42670,37606,30508,21693,19065,11434,10235,8094,7129,6420]
+    }]
+}; 
+myChart3.setOption(option3);     
+</script>
+</html>
