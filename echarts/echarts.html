@@ -5,7 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <style>
-     #a,#b,#d,#e{
+        div{
+            display: inline-block
+        }
+     #a,#b,#d,#e,#f{
          width:590px;
          height: 490px;
          display: inline-block;
@@ -20,11 +23,13 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="a"></div>
+    <div><h3>标题出现在圆环中间</h3><div id="a"></div></div>
+    
     <div id="b"></div>
     <div id="c"></div>
-    <div id="d"></div>
-    <div id="e"></div>
+    <div><h3>柱状图颜色渐变</h3><div id="d"></div></div>
+    <div><h3>图例后面加上百分比并对齐，中心出现名称及百分比</h3><div id="e"></div></div>
+    <div><h3>柱状图bar颜色不同</h3><div id="f"></div></div>
 </body>
 <script src="echarts.js"></script>
 <script>
@@ -348,5 +353,101 @@ myChart3.setOption(option3);
                 ]
             };
             chart8.setOption(option8);
+</script>
+<script>
+           var chart6 = echarts.init(document.getElementById('f'));
+            
+            var option6 = {
+                tooltip: {
+                    trigger: 'axis',
+                    axisPointer: {
+                        type: 'shadow'
+                    },
+                },
+               
+                grid: {
+                    left: 20,
+                    right: 20,
+                    bottom: 20,
+                    top:10,
+                    containLabel: true
+                },
+                    xAxis: {
+                        type: 'category',
+                        
+                        data: ['36岁以下', '36-45岁', '46-55岁', '56岁以上'],
+                        axisLine: {
+                            lineStyle: {
+                                color: '#535a69',
+                                width: 2
+                            }
+                        },
+                        axisTick: {
+                            show: false
+                        },
+                        axisLabel: {
+                            interval: 0,
+                            textStyle: {
+                               
+                                fontFamily: "AgencyFBBold",
+                                fontSize: 12
+                            }
+                        }
+                    },
+                    yAxis: {
+                        type: 'value',
+                        min: 0,
+                        max: 150,
+                        interval: 50,
+                        splitLine: {
+                            show: true,
+                            lineStyle:{
+                                color:'#053c44'
+                            }
+                        },
+                        axisLine: {
+                            lineStyle: {
+                                color: '#535a69',
+                                width: 2
+                            }
+                        },
+                        axisTick: {
+                            show: false
+                        },
+                        axisLabel: {
+                            textStyle: {
+                               
+                                fontFamily: "AgencyFBBold",
+                                fontSize: 16
+                            },
+                            
+                        splitLine: {
+                            lineStyle: {
+                                color: '#535a69',
+                                opacity: 0.6
+                            }
+                        }
+                        
+                    },
+                },
+                    series: [{
+                       
+                        name:'人数',
+                        data: [56, 100, 26, 14],
+                        type: 'bar',
+                        color:['#25d4e7','#fe6b40'],
+                        barWidth:20,
+                       
+                        itemStyle:{
+                          normal:{
+                              color:function(params) { 
+                                var colorList = ['#25d4e7','#fe6b40','#25d4e7','#fe6b40','#25d4e7'];
+                                return colorList[params.dataIndex] 
+                            }
+                          }
+                        }
+                    }]
+            };
+            chart6.setOption(option6);
 </script>
 </html>
