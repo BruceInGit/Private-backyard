@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <style>
-     #a,#b,#d{
+     #a,#b,#d,#e{
          width:590px;
          height: 490px;
          display: inline-block;
@@ -24,6 +24,7 @@
     <div id="b"></div>
     <div id="c"></div>
     <div id="d"></div>
+    <div id="e"></div>
 </body>
 <script src="echarts.js"></script>
 <script>
@@ -287,5 +288,65 @@
     }]
 }; 
 myChart3.setOption(option3);     
+</script>
+<script>
+            var chart8 = echarts.init(document.getElementById('e'));
+            var option8 ={
+               legend: {
+                    orient: 'vertical',
+                    itemWidth:10,
+                    itemHeight:10,
+                    left:0,
+                    top:'bottom',
+                    data:['汉族','少数民族'],
+                    textStyle:{
+                        padding:0,
+                        fontSize: 12,
+                      
+                    },
+                    formatter: function(name) {
+                                            var index = 0;
+                                            var clientlabels = ['汉族','少数民族'];
+                                            var clientcounts = ['       90%','10%'];
+                                            clientlabels.forEach(function(value,i){
+                                                if(value == name){
+                                                    index = i;
+                                                }
+                                            });
+                                            return name + " " + clientcounts[index];
+                                        }
+                },
+                series: [
+                    {   
+                        
+                        type:'pie',
+                        radius: ['60%', '80%'],
+                        center:['50%','50%'],
+                        color:['#25d4e7','#fe6b40'],
+                        avoidLabelOverlap: false,
+                        hoverAnimation:false,
+                        label: {
+                            normal: {
+                                show: false,
+                                position: 'center',
+                                formatter: '{b}\n{c}%'  
+                            },
+                            emphasis: {
+                                show: true,
+                                textStyle: {
+                                    fontSize: '14',
+                                    fontWeight: 'bold'
+                                }
+                            }
+                        },
+                        data:[
+                            {value:90, name:'汉族'},
+                            {value:10, name:'少数民族'},
+                           
+                        ]
+                    }
+                ]
+            };
+            chart8.setOption(option8);
 </script>
 </html>
