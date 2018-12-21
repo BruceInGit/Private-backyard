@@ -1,24 +1,20 @@
-# test
+# vue学习进度
 
-## Project setup
+## 下载
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### 启动服务
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
-```
-npm run build
-```
 
 ### 说明
 ```
 使用vue-cli3.0
 ```
 
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+### 正在学习中
+
