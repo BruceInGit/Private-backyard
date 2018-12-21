@@ -1,21 +1,30 @@
 <template>
   <div id="app">
     <requestdata></requestdata>
+    
     <storage></storage>
+   
     <parent></parent>
+     <br>
+    <apage></apage>
+    <bpage></bpage>
   </div>
 </template>
 
 <script>
 import requestdata from './components/requestdata.vue'
-import storage from './components/storage'
-import parent from './components/parent'
+import storage from './components/storage.vue'
+import parent from './components/transdata/parent.vue'
+import apage from './components/transdata/apage.vue'
+import bpage from './components/transdata/bpage.vue'
 export default {
   name: 'app',
   components: {
     requestdata,
     storage,
-    parent
+    parent,
+    apage,
+    bpage,
   }
 }
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div class="hello">
     <div class="title">
-      vue请求数据
+      vue请求数据axios和vue-resource
     </div>
    <button @click="get()">v-resource请求接口</button>
    <h2>v-resource请求的数据</h2>
