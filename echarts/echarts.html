@@ -8,13 +8,13 @@
         div{
             display: inline-block
         }
-     #a,#b,#d,#e,#f{
+     #a,#b,#d,#e,#f,#g{
          width:590px;
          height: 490px;
          display: inline-block;
          padding: 20px;
      }
-     #c{
+     #c,#h{
          width: 1200px;
          height: 490px;
          margin: 0 auto;
@@ -29,9 +29,27 @@
     <div id="c"></div>
     <div><h3>柱状图颜色渐变</h3><div id="d"></div></div>
     <div><h3>图例后面加上百分比并对齐，中心出现名称及百分比</h3><div id="e"></div></div>
-    <div><h3>柱状图bar颜色不同</h3><div id="f"></div></div>
+    <div><h3>柱状图bar颜色不同,svg渲染模式</h3><div id="f"></div></div>
+    <div>
+        <h3>datazoom缩放属性</h3>
+        <div id="g"></div>
+    </div>
+    <div>
+        <h3>label文字不居中是因为显示的位置是省会位置，居中需一一修改需修改china里的配置</h3>
+        <div id="h"></div>
+        <svg width="100%" height="100%">
+                <g stroke="#fe6b40" fill="none" stroke-width="3">
+                    <circle r="25" cx="26" cy="26" stroke-dasharray="5,5"></circle>
+                    <animateTransform attributeName="transform" type="rotate" from="0,26,26" to="360,26,26" dur="10s"
+                        repeatCount="indefinite" />
+                </g>
+                <circle r="20" cx="26" cy="26" fill="none" stroke="#3bcdd7" stroke-width="2"></circle>
+                <text x="22" y="29" class="area-num-text">2</text>
+            </svg>
+    </div>
 </body>
 <script src="echarts.js"></script>
+<script src="china.js"></script>
 <script>
     var myChart = echarts.init(document.getElementById('a'));
            var option = {
@@ -355,7 +373,7 @@ myChart3.setOption(option3);
             chart8.setOption(option8);
 </script>
 <script>
-           var chart6 = echarts.init(document.getElementById('f'));
+           var chart6 = echarts.init(document.getElementById('f'),null,{renderer: 'svg'});
             
             var option6 = {
                 tooltip: {
@@ -449,5 +467,153 @@ myChart3.setOption(option3);
                     }]
             };
             chart6.setOption(option6);
+</script>
+<script>
+    var mychart4=echarts.init(document.getElementById('g'));
+    var option4={
+            xAxis: {
+                type: 'category',
+                data: function () {
+                    var list=[];
+                    for(i=1;i<=30;i++){
+                        list.push(i);
+                    }
+                    return list
+                  }()
+            },
+            yAxis: {
+                type: 'value'
+            },
+            dataZoom: [
+                    {
+                        type: 'slider',//slider有单独的滑动条，用户在滑动条上进行缩放或漫游。
+                        show: true,
+                        xAxisIndex: [0],//设置控制的哪一条轴
+                        start: 1,//数据窗口范围的起始百分比
+                        end: 35   //数据窗口范围的结束百分比
+                    },
+                    {
+                        type: 'slider',
+                        show: true,
+                        yAxisIndex: [0],
+                        left: '93%',
+                        start: 29,
+                        end: 36
+                    },
+                    {
+                        type: 'inside',//内置于坐标系中，使用户可以在坐标系上通过鼠标拖拽、鼠标滚轮、手指滑动（触屏上）来缩放或漫游坐标系。
+                        xAxisIndex: [0],
+                        start: 1,
+                        end: 35
+                    },
+                    {
+                        type: 'inside',
+                        yAxisIndex: [0],
+                        start: 29,
+                        end: 36
+                    }
+                ],
+            series: [{
+                data: function(){
+                    var list=[];
+                    for(i=1;i<=30;i++){
+                        list.push(Math.round(Math.random()*30));
+                    }
+                    return list;
+                }(),
+                type: 'line'
+            }]
+
+    };
+    mychart4.setOption(option4);
+</script>
+<script>
+  var mychart5=echarts.init(document.getElementById('h'));
+  var option5={
+    title : {
+        text: '网站访问量',
+        left: 'center'
+    },
+    tooltip : {
+        trigger: 'item'
+    },
+    visualMap: {  //视觉映射组件,地图左边的小柱子
+        type: 'continuous', //连续的柱状
+        min: 0,
+        max: 1000,
+        left: '20%',
+        top: 'bottom',
+        text:['高','低'],           // 文本，默认为数值文本
+        calculable : true,        //是否可以拖拽
+        inRange:{                  //颜色选取
+            color: ['#b1e0ee', '#fffd4c', '#ff4e4c'],
+        }
+    },
+    toolbox: {
+        show: true,
+        orient : 'vertical',
+        left: 'right',
+        top: 'center',
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    series : [
+        {
+            name: '访问量',
+            type: 'map',
+            mapType: 'china',
+            roam: true,
+            label: {
+               show:true,
+               
+            },
+          
+            data:[
+                {name: '北京',value: Math.round(Math.random()*1000)},
+                {name: '天津',value: Math.round(Math.random()*1000)},
+                {name: '上海',value: Math.round(Math.random()*1000)},
+                {name: '重庆',value: Math.round(Math.random()*1000)},
+                {name: '河北',value: Math.round(Math.random()*1000)},
+                {name: '河南',value: Math.round(Math.random()*1000)},
+                {name: '云南',value: Math.round(Math.random()*1000)},
+                {name: '辽宁',value: Math.round(Math.random()*1000)},
+                {name: '黑龙江',value: Math.round(Math.random()*1000)},
+                {name: '湖南',value: Math.round(Math.random()*1000)},
+                {name: '安徽',value: Math.round(Math.random()*1000)},
+                {name: '山东',value: Math.round(Math.random()*1000)},
+                {name: '新疆',value: Math.round(Math.random()*1000)},
+                {name: '江苏',value: Math.round(Math.random()*1000)},
+                {name: '浙江',value: Math.round(Math.random()*1000)},
+                {name: '江西',value: Math.round(Math.random()*1000)},
+                {name: '湖北',value: Math.round(Math.random()*1000)},
+                {name: '广西',value: Math.round(Math.random()*1000)},
+                {name: '甘肃',value: Math.round(Math.random()*1000)},
+                {name: '山西',value: Math.round(Math.random()*1000)},
+                {name: '内蒙古',value: Math.round(Math.random()*1000)},
+                {name: '陕西',value: Math.round(Math.random()*1000)},
+                {name: '吉林',value: Math.round(Math.random()*1000)},
+                {name: '福建',value: Math.round(Math.random()*1000)},
+                {name: '贵州',value: Math.round(Math.random()*1000)},
+                {name: '广东',value: Math.round(Math.random()*1000)},
+                {name: '青海',value: Math.round(Math.random()*1000)},
+                {name: '西藏',value: Math.round(Math.random()*1000)},
+                {name: '四川',value: Math.round(Math.random()*1000)},
+                {name: '宁夏',value: Math.round(Math.random()*1000)},
+                {name: '海南',value: Math.round(Math.random()*1000)},
+                {name: '台湾',value: Math.round(Math.random()*1000)},
+                {name: '香港',value: Math.round(Math.random()*1000)},
+                {name: '澳门',value: Math.round(Math.random()*1000)}
+            ]
+        },
+       
+        
+       
+    ]
+};;
+  mychart5.setOption(option5);
 </script>
 </html>
