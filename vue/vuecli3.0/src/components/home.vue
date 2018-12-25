@@ -9,6 +9,8 @@
     <router-link to='/parent'>传值</router-link>
     <br>
     <router-link to="/routelist">动态路由匹配</router-link>
+    <br>
+    <router-link to="/proute">嵌套路由</router-link>
     </div>
     
 </template>

@@ -6,6 +6,9 @@ import storage from './components/storage.vue'
 import parent from './components/transdata/parent.vue'
 import routelist from './components/routeMatch/routelist.vue'
 import detail from './components/routeMatch/detail.vue'
+import proute from './components/childrouter/proute.vue'
+import broute from './components/childrouter/broute.vue'
+import croute from './components/childrouter/croute.vue'
 Vue.use(Router)
 export default new Router({
       routes:[ 
@@ -14,7 +17,7 @@ export default new Router({
             component: Home
         },
         {
-            path:'/',
+            path:'/',          //重定向
             redirect:'/home'
         },
         {
@@ -33,11 +36,29 @@ export default new Router({
             path:'/routelist',
             component:routelist
         },
-        {
+        {                           //动态匹配路由
             path:'/detail/:id',
             name:'detail',
             component:detail
-        }
+        },
+        {
+            path:'/proute',
+            component:proute,
+            children:[
+                {
+                    path:'/',
+                    redirect:'/proute/broute'
+                },
+                {                  //嵌套路由
+                    path:'broute',
+                    component:broute, 
+                },
+                {
+                    path:'croute',
+                    component:croute, 
+                }
+            ]
+        },
      ]
 })
 
