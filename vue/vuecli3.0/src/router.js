@@ -4,7 +4,8 @@ import Home from './components/home.vue'
 import requestdata from './components/requestdata.vue'
 import storage from './components/storage.vue'
 import parent from './components/transdata/parent.vue'
-
+import routelist from './components/routeMatch/routelist.vue'
+import detail from './components/routeMatch/detail.vue'
 Vue.use(Router)
 export default new Router({
       routes:[ 
@@ -27,6 +28,14 @@ export default new Router({
         {
             path: '/parent',
             component: parent
+        },
+        {
+            path:'/routelist',
+            component:routelist
+        },
+        {
+            path:'/routelist/detail/:id',
+            component:detail
         }
      ]
 })

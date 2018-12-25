@@ -7,6 +7,8 @@
     <router-link to='/storage'>TODO例子</router-link>
      <br>
     <router-link to='/parent'>传值</router-link>
+    <br>
+    <router-link to="/routelist">动态路由匹配</router-link>
     </div>
     
 </template>
