@@ -34,7 +34,7 @@ export default new Router({
             component:routelist
         },
         {
-            path:'/routelist/detail/:id',
+            path:'/detail/:id',
             name:'detail',
             component:detail
         }

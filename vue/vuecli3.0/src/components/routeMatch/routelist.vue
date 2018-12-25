@@ -2,7 +2,7 @@
     <div>
        <ul>
            <li v-for="(item,key) in list">
-               <router-link :to="'/routelist/detail/'+item.aid">{{item.aid}}-----{{item.title}}</router-link>
+               <router-link :to="'/detail/'+item.aid">{{item.aid}}-----{{item.title}}</router-link>
                 <div @click="daohang(item.aid)">{{item.aid}}-编程式导航-{{item.title}}</div>
            </li>
        </ul>
