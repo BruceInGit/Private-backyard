@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="layui/css/layui.css">
+    <link rel="stylesheet" href="css/index.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="layui-container">
+        <h1>layui使用</h1>
+        <h2>布局</h2>
+        <div class="layui-row">
+            <img src="images/zhalan.png" alt="栅栏布局说明">
+            <div class="layui-col-xs6 layui-col-sm6 layui-col-md4 layui-bg-green padd20">手机6 小屏幕6 中等屏幕4</div>
+            <div class="layui-col-xs6 layui-col-sm6 layui-col-md5 layui-bg-cyan padd20">手机6 小屏幕6 中等屏幕5</div>
+            <div class="layui-col-xs4 layui-col-sm12 layui-col-md3 layui-bg-orange padd20">手机4 小屏幕12 中等屏幕3</div>
+        </div>
+        <div class="layui-row layui-col-space10">
+            <div>列间距layui-col-space（1,3,5,8,10,12,15,18,20,22,25,28,30）设置在layui-row旁</div>
+            <div class="red">给row设置列间距之后，要将内容的放入div中，再将div嵌入到coldiv中，否则没有格子间隔</div>
+            <div class=" layui-col-sm6 layui-col-md4  "><div class="layui-bg-green padd20 ">1</div></div>
+            <div class=" layui-col-sm6 layui-col-md5  "><div class="layui-bg-green padd20">2</div></div>
+            <div class=" layui-col-sm12 layui-col-md3  "><div class="layui-bg-green padd20">3</div></div>
+        </div>
+        <div class="layui-row">
+            <div>列偏移layui-col-屏幕标识-offset4</div>
+            <div class="layui-col-md4 layui-bg-green padd20">
+              4/12
+            </div>
+            <div class="layui-col-md4 layui-bg-green padd20 layui-col-md-offset4">
+              偏移4列，从而在最右
+            </div>
+        </div>
+        <div>让IE8/9支持媒体查询，从而兼容栅格<br> 
+            [if lt IE 9]<br>
+            &lt;script src="https://cdn.staticfile.org/html5shiv/r29/html5.min.js">&lt;/script><br>
+            &lt;script src="https://cdn.staticfile.org/respond.js/1.4.2/respond.min.js">&lt;/script><br>
+            [endif]
+        </div>
+<script src="layui/layui.js"></script>
+<script src="js/index.js"></script>    
+</body>
+</html>
