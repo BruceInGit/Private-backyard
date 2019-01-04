@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+     .bars-box{
+         position: absolute;
+         top:50%;
+         left: 50%;
+     } 
+    .bars{
+        transform-style:preserve-3d;
+        transform: rotateX(-29deg) rotateY(28deg);
+    }
+    .bar{
+        transform-style:preserve-3d;
+      
+    }
+    .bar:nth-child(1){
+        margin-left: 20px;
+     animation: grow-4 13s cubic-bezier(0.17, 0.89, 0.32, 1.28) infinite;
+    }
+    .bar:nth-child(2){
+        margin-left: 40px;
+        animation: grow-3 13s cubic-bezier(0.17, 0.89, 0.32, 1.28) infinite;
+    }
+    .bar:nth-child(3){
+        margin-left: 60px;
+        animation: grow-2 13s cubic-bezier(0.17, 0.89, 0.32, 1.28) infinite;
+    }
+    .bar:nth-child(4){
+        margin-left: 80px;
+        animation: grow-1 13s cubic-bezier(0.17, 0.89, 0.32, 1.28) infinite;
+    }
+    .bar:nth-child(2) .face:nth-child(1){
+        background-color: #fff12f;
+    }
+    .bar:nth-child(2) .face:nth-child(3) {
+       background-color: #f6ba2c;
+    }
+    .bar:nth-child(2) .face:nth-child(5) {
+       background-color: #faee42;
+    }
+@keyframes grow-1 {
+    0%, 0% {
+      transform: scaleY(-0.01);
+    }
+    8.33333%, 100% {
+      transform: scaleY(-0.4);
+    }
+}
+@keyframes grow-2 {
+  0%, 8.33333% {
+    transform: scaleY(-0.01);
+  }
+  16.66667%, 100% {
+    transform: scaleY(-0.6);
+  }
+}
+@keyframes grow-3 {
+    0%, 16.66667% {
+      transform: scaleY(-0.01);
+    }
+    25%, 100% {
+      transform: scaleY(-0.8);
+    }
+}
+@keyframes grow-4 {
+    0%, 25% {
+      transform: scaleY(-0.01);
+    }
+    33.33333%, 100% {
+      transform: scaleY(-1);
+    }
+}
+    .face{
+        width: 16px;
+        height: 60px;
+        position: absolute;
+    }
+    .bar .face:nth-child(1) {
+       transform: translateZ(8px);
+       background-color: #2786fd;
+    }
+    .bar .face:nth-child(2) {
+       transform: translateZ(-8px);
+    }
+    .bar .face:nth-child(3) {
+        transform: translateX(-8px) rotateY(-90deg);
+       background-color: #1d6bfb;
+    }
+    .bar .face:nth-child(4) {
+       transform: translateX(8px) rotateY(90deg);
+    }
+    .bar .face:nth-child(5) {
+        width: 16px;
+        height: 16px;
+        transform: translateY(52px) rotateX(90deg);
+       background-color: #3097fd;
+    }
+    </style>
+</head>
+<body>
+    <div class="bars-box">
+       <div class="bars">
+            <div class="bar">
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                </div>
+                <div class="bar">
+                        <div class="face"></div>
+                        <div class="face"></div>
+                        <div class="face"></div>
+                        <div class="face"></div>
+                         <div class="face"></div>
+                </div>
+                <div class="bar">
+                        <div class="face"></div>
+                        <div class="face"></div>
+                        <div class="face"></div>
+                        <div class="face"></div>
+                        <div class="face"></div>
+                </div>
+                <div class="bar">
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                    <div class="face"></div>
+                 </div>
+       </div>
+     
+        
+       
+
+    </div>
+</body>
+</html>
