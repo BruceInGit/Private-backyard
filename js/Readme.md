@@ -15,7 +15,7 @@ parseInt()方法 两个参数 string和radix， radix是表示要解析的数字
 return parseInt(item,index)
 })
 ```
-而 parseInt('1',0) // 1
-   parseInt('2',1) // NaN
-   parseInt('3',2) // NaN
+而 parseInt('1',0) // 1   <br>
+   parseInt('2',1) // NaN  <br>
+   parseInt('3',2) // NaN  <br>
 ['1','2','3'].map(parseInt)  //[1,NaN,NaN]
