@@ -19,3 +19,17 @@ return parseInt(item,index)
    parseInt('2',1) // NaN  <br>
    parseInt('3',2) // NaN  <br>
 ['1','2','3'].map(parseInt)  //[1,NaN,NaN]
+
+
+###call、apply、bind的区别和用途
+call、apply都是用来改变函数内的this指向，
+call和apply第一个参数都是运行函数的作用域，call需要将传递的参数一一列举，而apply则是传入参数数组。
+两个函数更大的用处在于扩大函数的作用域。
+```javascript
+MAth.min.call(null,1,2) //2
+MAth.min.apply(null,[1,2]) //2
+
+[].slice.apply(arguments)
+```
+bind()这个方法会创建一个函数的实例，其this值会被绑定到传给bind()函数的值。
+[让你弄懂 call、apply、bind的应用和区别](https://juejin.im/post/5a9640335188257a7924d5ef)
