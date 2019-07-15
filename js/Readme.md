@@ -33,3 +33,45 @@ MAth.min.apply(null,[1,2]) //2
 ```
 bind()这个方法会创建一个函数的实例，其this值会被绑定到传给bind()函数的值。<br>
 [让你弄懂 call、apply、bind的应用和区别](https://juejin.im/post/5a9640335188257a7924d5ef)
+
+### JavaScript事件循环
+```javascript
+async function async1() {
+    console.log('async1 start');
+    await async2();
+    console.log('async1 end');
+}
+async function async2() {
+	console.log('async2');
+}
+
+console.log('script start');
+
+setTimeout(function() {
+    console.log('setTimeout');
+}, 0)
+
+async1();
+
+new Promise(function(resolve) {
+    console.log('promise1');
+    resolve();
+}).then(function() {
+    console.log('promise2');
+});
+console.log('script end');
+
+
+/*
+script start
+async1 start
+async2
+promise1
+script end
+async1 end
+promise2
+setTimeout
+*/
+```
+[事件执行](https://www.cnblogs.com/HanJie0824/p/7913003.html)
+[题解](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/7)
