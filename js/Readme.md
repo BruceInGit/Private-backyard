@@ -75,3 +75,4 @@ setTimeout
 ```
 [事件执行](https://www.cnblogs.com/HanJie0824/p/7913003.html)
 [题解](https://github.com/Advanced-Frontend/Daily-Interview-Question/issues/7)
+[js事件循环详解](https://juejin.im/post/59e85eebf265da430d571f89)
