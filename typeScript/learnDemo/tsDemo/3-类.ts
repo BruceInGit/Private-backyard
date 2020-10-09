@@ -1,6 +1,10 @@
 class Person {
     name: string;
     age: number;
+    constructor(){
+        this.name='123';
+        this.age=18
+    }
     skill() {
         return ''
     };
@@ -12,6 +16,11 @@ class Person {
 class boy extends Person {
     sex: 'male';
     name: '男孩';
+    constructor(){
+        super();
+        this.name='男孩';
+        this.sex='male'
+    }
     skill() {
         return '打游戏'
     }
@@ -54,7 +63,7 @@ class Teacher extends Person2{
     }
 }
 
-/******************* 类的getter、setter、static **************************** */
+/******************* 类的getter、setter、static、readOnly **************************** */
 
 //用get和set去设置private属性
 class Xiaojiejie {
@@ -74,3 +83,18 @@ class Girl {
     }
   }
   console.log(Girl.sayLove());
+
+//readOnly表示只读，不允许修改
+
+
+/***************************抽象类***************************** */
+//关键字abstract
+
+abstract class Girl2{
+    abstract skill():void  //因为没有具体的方法，所以我们这里不写括号
+}
+class Waiter extends Girl{
+    skill(){
+        console.log('大爷，请喝水！')
+    }
+}
