@@ -10,3 +10,16 @@ var throttle = function (fn, t) {
         }
     }
 }
+
+
+var throttleByTimer = function (func, delay) {
+    let timer = null;
+    
+    return function (...args) {
+        if (timer) return;
+        timer = setTimeout(function () {
+            func.apply(this, args);
+            timer = null;
+        }, delay);
+    };
+}
