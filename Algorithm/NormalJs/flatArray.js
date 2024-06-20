@@ -20,7 +20,7 @@ var flatArray = function (arr) {
     return result
   };
 
-  
+// link https://leetcode.cn/problems/flatten-deeply-nested-array/description/
   /**
  * @param {Array} arr
  * @param {number} depth
