@@ -2,6 +2,8 @@
 /**
  * @param {number[]} nums
  * @return {number[][]}
+ * 
+ * Use Set structure to remove duplicates
  */
 var threeSum = function (nums) {
     const sortNums = nums.sort((a, b) => a - b)
@@ -54,6 +56,7 @@ var threeSum = function (nums) {
                 right--
             } else {
                 array.push([num, sortNums[left], sortNums[right]])
+                //Deduplication
                 while (left < right && sortNums[left] == sortNums[left + 1]) {
                     left++
                 }
