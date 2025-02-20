@@ -18,12 +18,33 @@ function quickSort(arr){
 // bubble sort
 function bubbleSort(arr) {
     let len = arr.length;
-    for (let i = 0; i < len - 1; i++) {
+    for (let i = 0; i < len - 1; i++) { 
+        let swapped = false
         for (let j = 0; j < len - 1 - i; j++) {
             if (arr[j] > arr[j + 1]) {
                 [arr[j], arr[j + 1]] = [arr[j + 1], arr[j]];
+                swapped = true
             }
+        }
+        if (!swapped) {
+            break
         }
     }
     return arr;
+}
+
+function bubbleSortB(arr){
+   let swapped
+  
+  do {
+    swapped = false
+    for (let index = 0; index < arr.length -1; index++) {
+        if (arr[index] > arr[index + 1]) {
+            [arr[index], arr[index + 1]] = [arr[index + 1], arr[index]];
+            swapped = true
+        }
+       }
+   }while(swapped)
+   
+    return arr
 }
