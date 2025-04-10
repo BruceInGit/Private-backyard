@@ -21,3 +21,15 @@ function climbingStaircaseRecursive(n) {
 
     return climbingStaircaseRecursive(n - 1) + climbingStaircaseRecursive(n - 2)
 }
+
+// hanoi tower
+function hanoi(n,from,to,using){
+  if (n==1) {
+    console.log(`Move disk 1 from ${from} to ${to}`);
+    return;
+  }
+
+  hanoi(n-1, from,using,to)
+  console.log(`Move disk ${n} from ${from} to ${to}`)
+  hanoi(n-1,using,to,from)
+}
