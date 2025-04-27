@@ -190,7 +190,7 @@ class LinkedList {
         removedNode = prev.next;
         prev.next = removedNode.next;
       }
-      
+       this.size--
       return removedNode
    }
 
