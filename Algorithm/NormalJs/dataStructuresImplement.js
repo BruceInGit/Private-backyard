@@ -205,4 +205,20 @@ class LinkedList {
     
       return current.value
    }
+
+   reverse(){
+      if (this.isEmpty() || !this.head.next) {
+         return;
+       }
+      let current = this.head
+      let prev = null
+      while (current) {
+         let next = current.next
+         current.next = prev
+         prev = current
+         current = next
+      }
+
+      this.head = prev
+   }
 }
